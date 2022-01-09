@@ -1,5 +1,5 @@
 module.exports = function toReadable (number) {
-  const onenumber = ['','one','two','three',
+    const onenumber = ['','one','two','three',
     'four','five','six','seven','eight','nine','ten', 
     'eleven','twelve','thirteen','fourteen','fifteen','sixteen',
     'seventeen','eighteen','nineteen','twenty'];
@@ -10,12 +10,20 @@ module.exports = function toReadable (number) {
     'eight hundred','nine hundred'];
     numberstr = number.toString()
     const numberstrA = numberstr.split('')
-    if (number <= 20) {result = twonumber[number];console.log(number,onenumber[number])}                            
+ if (number === 0) {result = 'zero'}                               
+ if (number <= 20 && number >0) {result = onenumber[number]}                            
     if (number > 19 && number <= 99) {
             const numberarr = numberstr.split('')
-             result = twonumber[numberarr[0]] + ' ' + onenumber[numberarr[1]]}
+             result = twonumber[numberarr[0]] + ' ' + onenumber[numberarr[1]]
+         }
     if (number > 99) {
                 const numberarr = numberstr.split('')
-                 result = threenumber[numberarr[0]] + " "+ twonumber[numberarr[1]] + ' ' + onenumber[numberarr[2]]}
+                const numb = Number(numberarr[1])
+                if (Number(numberarr[1]) < 2) {
+                    const IndexTwo = numberarr[1] + numberarr[2]
+                    result = threenumber[numberarr[0]] + ' ' + onenumber[Number(IndexTwo)] }
+                else {result = threenumber[numberarr[0]] + " "+ twonumber[numberarr[1]] + ' ' + onenumber[numberarr[2]]}
+                }
+    result = result.trimRight()
     return result  
 }
